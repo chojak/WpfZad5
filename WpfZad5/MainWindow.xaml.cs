@@ -21,8 +21,8 @@ namespace WpfZad5
     /// 
     public partial class MainWindow : Window
     {
-        public List<Movie> MovieList { get; set; }
-        public Details detailsWid = null;
+        public List<Movie> MovieList;
+        public Details detailsWid;
 
         private void Refresh()
         {
@@ -40,13 +40,6 @@ namespace WpfZad5
             DetailsButton.IsEnabled = false;
         }
 
-        private static bool IsWindowOpen<T>(string name = "") where T : Window
-        {
-            return string.IsNullOrEmpty(name)
-               ? Application.Current.Windows.OfType<T>().Any()
-               : Application.Current.Windows.OfType<T>().Any(w => w.Name.Equals(name));
-        }
-
         public void DetailsClosed(object sender, System.EventArgs e)
         {
             detailsWid = null;
@@ -62,8 +55,6 @@ namespace WpfZad5
             MovieList.Add(new Movie("Testowy film 3", new DateTime(2022, 04, 04), "Testowy opis 3"));
 
             Refresh();
-
-            //MovieListBox.DataContext = MovieList;
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -74,8 +65,6 @@ namespace WpfZad5
 
             if (addWid.ShowDialog() == true)
             {
-                //MovieListBox.ItemsSource = MovieList;
-
                 MovieList.Add(addWid.Movie);
             }
 
@@ -85,9 +74,6 @@ namespace WpfZad5
 
         private void MovieListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //MessageBox.Show(MovieListBox.Items.IndexOf(MovieListBox.SelectedItem).ToString());
-            //MessageBox.Show(MovieListBox.SelectedIndex.ToString());
-            
             EditButton.IsEnabled = true;
             DeleteButton.IsEnabled = true;
             DetailsButton.IsEnabled = true;
@@ -145,7 +131,6 @@ namespace WpfZad5
             {
                 detailsWid.ChangeMovie(movie);
             }
-
         }
     }
 }
