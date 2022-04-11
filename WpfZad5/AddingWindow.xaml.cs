@@ -26,6 +26,7 @@ namespace WpfZad5
         {
             InitializeComponent();
             DateInput.SelectedDate = DateTime.Now;
+            DateInput.BlackoutDates.AddDatesInPast();
         }
         public AddingWindow(Movie movie)
         {
@@ -35,6 +36,8 @@ namespace WpfZad5
             TitleInput.Text = movie.title;
             DateInput.Text = movie.premiereDate.ToString();
             DescriptionInput.Text = movie.description;
+            HourInput.Text = movie.premiereDate.Hour.ToString();
+            MinuteInput.Text = movie.premiereDate.Minute.ToString();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -46,8 +49,8 @@ namespace WpfZad5
         {
             if (TitleInput.Text.Length > 1 && DescriptionInput.Text.Length > 1 && DateTime.TryParse(DateInput.Text, out DateTime date))
             {
-                date.AddHours(Hours);
-                date.AddMinutes(Minutes);
+                date = date.AddHours(Hours);
+                date = date.AddMinutes(Minutes);
 
                 Movie = new Movie(TitleInput.Text, date, DescriptionInput.Text);
                 DialogResult = true;

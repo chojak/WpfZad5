@@ -30,8 +30,7 @@
             <TextBox x:Name="HourInput" Width="20" TextChanged="HourInput_TextChanged"></TextBox>
             <Label Padding="5, 0, 5, 0"> : </Label>
             <TextBox x:Name="MinuteInput" Width="20" TextChanged="MinuteInput_TextChanged"></TextBox>
-
-            <DatePicker x:Name="DateInput" ></DatePicker>
+            <DatePicker x:Name="DateInput" Margin="5,0,0,0"></DatePicker>
             
         </DockPanel>
 
