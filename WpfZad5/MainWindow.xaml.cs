@@ -69,7 +69,6 @@ namespace WpfZad5
             }
 
             Refresh();
-            UnselectMovie();
         }
 
         private void MovieListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -78,7 +77,7 @@ namespace WpfZad5
             DeleteButton.IsEnabled = true;
             DetailsButton.IsEnabled = true;
 
-            if (detailsWid != null)
+            if (detailsWid != null) 
             {
                 Movie movie = MovieList[MovieListBox.SelectedIndex];
                 detailsWid.ChangeMovie(movie);
@@ -95,24 +94,31 @@ namespace WpfZad5
 
             if (editWid.ShowDialog() == true)
             {
-                MovieList[MovieListBox.SelectedIndex] = editWid.Movie;
+                if (detailsWid != null)
+                    detailsWid.ChangeMovie(editWid.Movie);
 
+                MovieList[MovieListBox.SelectedIndex] = editWid.Movie;
+                detailsWid.Close();
+                detailsWid = null;  
                 Refresh();
             }
-            UnselectMovie();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             Movie movie = MovieList[MovieListBox.SelectedIndex];
 
+
             if (MessageBox.Show("Chcesz usunąć: " + movie.title, "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.No)
             {
-                MovieList.Remove(movie);
+                UnselectMovie();
 
+                if (detailsWid != null)
+                    detailsWid.Close();
+
+                MovieList.Remove(movie);
                 Refresh();
             }
-            UnselectMovie();
         }
 
         private void DetailsButton_Click(object sender, RoutedEventArgs e)

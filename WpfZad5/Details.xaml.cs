@@ -33,6 +33,7 @@ namespace WpfZad5
         {
             Movie = movie;
 
+            this.Title = movie.title;
             TitleDisplay.Text = movie.title;
             DateDisplay.Text = movie.premiereDate.ToString();
             DescriptionDisplay.Text = movie.description;
