@@ -1,0 +1,31 @@
+﻿<Window x:Class="WpfZad5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfZad5"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ListBox x:Name="MovieListBox" SelectionChanged="MovieListBox_SelectionChanged"/>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="AddButton" Margin="40,0,40,5" Grid.Column="0" Height="20" VerticalAlignment="Bottom" Click="AddButton_Click">Dodaj</Button>
+            <Button x:Name="EditButton" IsEnabled="False" Margin="40,0,40,5" Grid.Column="1" Click="EditButton_Click">Edytuj</Button>
+            <Button x:Name="DeleteButton" IsEnabled="False" Margin="40,0,40,5" Grid.Column="2" Click="DeleteButton_Click">Usuń</Button>
+            <Button x:Name="DetailsButton" IsEnabled="False" Margin="40,0,40,5" Grid.Column="3" Click="DetailsButton_Click">Podgląd</Button>
+        </Grid>
+    </Grid>
+</Window>
